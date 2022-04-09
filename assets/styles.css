@@ -1,0 +1,19 @@
+#body {
+}
+
+.photo {
+    width: 75px; 
+    border: 1px solid rgb(200, 200, 200); 
+    border-radius: 50%;
+}
+
+.fullName {
+    font-size: 30px;
+    font-family: 'Outfit', sans-serif;
+    font-family: 'Raleway', sans-serif;
+}
+
+.details {
+    color: gray;
+    /* margin: 0; */
+}
