@@ -1,5 +1,14 @@
 let requestURL = 'https://api.hatchways.io/assessment/students';
 
+//search bar
+let searchBar = document.createElement('input');
+searchBar.type = 'text';
+searchBar.className = 'searchBar';
+searchBar.placeholder = "Search for names..."
+// searchBar.onkeypress = searchNames();
+
+body.appendChild(searchBar);
+
 function getAPI() {
 
     // performing fetch request and translating into json object:
@@ -77,7 +86,27 @@ function getAPI() {
                 detailsDiv.appendChild(company);
                 detailsDiv.appendChild(skill);
             }
+
         })
 }
-
 getAPI();
+
+// function searchNames() {
+
+//     // Declare variables
+//     let txtValue;
+//     let readInput = searchBar.value.toUpperCase().toString();
+//     console.log(readInput)
+
+//   //  Loop through all names, and hide those who don't match the search query
+
+//     for(let i = 0; i < fullName.length; i++){
+//         textValue = fullName.textContent || fullName.innerText;
+//         if (txtValue.indexOf(filter) > -1) {
+//             parentDiv.classListAdd('visible');
+//         } else {
+//             parentDiv.classListAdd('hide');
+//         }
+//     }
+// }
+

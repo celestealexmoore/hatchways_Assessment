@@ -1,35 +1,20 @@
-.photo {
-    width: 75px;
-    border: 1px solid rgb(200, 200, 200);
-    border-radius: 50%;
+body {
+    /* overflow: hidden; */
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 10px
 }
-
-.fullName {
-    margin: 0;
-    font-size: 30px;
-    font-family: 'Outfit', sans-serif;
-    font-family: 'Raleway', sans-serif;
-}
-
-.details {
-    color: gray;
-    margin: 0;
-}
-
+/* all parent divs */
 #parentDiv {
-    width: 100%;
+    max-width: 100%;
     padding: 10px;
     display: flex;
     flex-flow: row nowrap;
-    border-bottom: 1px solid rgb(200, 200, 200); 
+    border-bottom: 0.5px solid #ddd; 
 }
-
 #photoDiv {
-    width: 20%;
-    text-align: center;
     align-self: center;
 }
-
 #userInfoDiv {
     display: flex;
     flex-flow: column nowrap;
@@ -37,11 +22,43 @@
     margin: 0;
     width: 80%;
 }
-
 #nameDiv {
     margin-left: 10px;
+    margin-bottom: 7px;
 }
-
 #detailsDiv {
     margin-left: 25px;
+}
+/* individual classes */
+.photo {
+    width: 75px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 50%;
+    float: right;
+}
+.fullName {
+    margin: 0;
+    font-size: 25px;
+    font-family: 'Outfit', sans-serif;
+    font-family: 'Raleway', sans-serif;
+}
+.details {
+    color: gray;
+    margin: 0;
+}
+/* This is for the search list */
+.searchBar {
+    width: 95%;
+    align-self: center;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid white;
+    border-bottom: 1.5px solid #ddd;
+    color: black;
+    margin-bottom: 15px;
+}
+
+/* controls search result visibility */
+.hide {
+    visibility: hidden;
 }
