@@ -21,6 +21,7 @@ function getAPI() {
             // to view data response from fetch:
             console.log(data)
 
+
             for(let i = 0; i < data['students'].length; i++) {
    
                 // for flexbox div structure:
@@ -65,19 +66,12 @@ function getAPI() {
                 let skill = document.createElement('p');
                 skill.setAttribute('class', 'details');
                 skill.textContent = "Skill: " + data['students'][i]['skill'];
-
-                //average
-                /* 
-                function findAverage(grades) {
-                let total = 0;
-                for(let i = 0; i < grades.length; i++) {
-                total += grades;
-                }
-                let average = total / grades.length;
-                console.log(average);
-                }
-                findAverage(data['students'][i]['grades'])
-                */
+                // grades element:
+                const gradesList = data['students'][i]['grades'];
+                grades = document.createElement('p');
+                grades.setAttribute('class', 'details');
+                findAverage(gradesList)
+                
                 
                 // appending children elements to parent divs:
                 photoDiv.appendChild(photo);
@@ -85,11 +79,29 @@ function getAPI() {
                 detailsDiv.appendChild(email);
                 detailsDiv.appendChild(company);
                 detailsDiv.appendChild(skill);
+                detailsDiv.appendChild(grades);
+
+            //average
+            function findAverage(gradesList) {
+                let sum = 0;
+
+                for(let i = 0; i < gradesList.length; i++) {
+                    sum += Number(gradesList[i]);
+                    console.log(sum)
+                };
+
+                // sum += value; //sum should equal 711 for first student
+                let average = sum / gradesList.length;
+                grades.textContent = "Grade: " +  Math.round(average) + "%";
+
             }
+        };
 
         })
-}
+    };
+
 getAPI();
+
 
 // function searchNames() {
 
@@ -109,4 +121,3 @@ getAPI();
 //         }
 //     }
 // }
-
