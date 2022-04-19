@@ -65,6 +65,9 @@ function getAPI() {
         let grades = document.createElement("p");
         grades.setAttribute("class", "details");
         findAverage(gradesList);
+        // icon
+        let icon = document.createElement("i");
+        icon.setAttribute("class", "bi bi-plus-square");
 
         // appending children elements to parent divs:
         photoDiv.appendChild(photo);
@@ -73,6 +76,7 @@ function getAPI() {
         detailsDiv.appendChild(company);
         detailsDiv.appendChild(skill);
         detailsDiv.appendChild(grades);
+        detailsDiv.appendChild(icon);
 
         //average
         function findAverage(gradesList) {
