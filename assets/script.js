@@ -112,32 +112,24 @@ function getAPI() {
             }
           }
         }
-        // searchIcon.addEventListener("click", searchNames(searchBar.value));
         searchBar.addEventListener("keydown", function (e) {
           if (e.key === "Enter") {
             searchNames(searchBar.value);
           }
         });
-        //expandable list:
-        //  if(iconParent.clicked == true) {
-        //this is not working.
-
         iconParent.addEventListener("click", () => {
-            for (let i = 0; i < gradesList.length; i++) {
-                let expandDiv = document.createElement("div");
-                expandDiv.setAttribute("class", "visible");
-                let ul = document.createElement("ul");
-                let li = document.createElement("li");
-                li.textContent = "Test " + [i] + ": " + gradesList[i] + "%";
-    
-                detailsDiv.appendChild(expandDiv);
-                expandDiv.appendChild(ul);
-                ul.appendChild(li);
-              }
+          for (let i = 0; i < gradesList.length; i++) {
+            let expandDiv = document.createElement("div");
+            expandDiv.setAttribute("class", "visible");
+            let ul = document.createElement("ul");
+            let li = document.createElement("li");
+            li.textContent = "Test " + [i] + ": " + gradesList[i] + "%";
+
+            detailsDiv.appendChild(expandDiv);
+            expandDiv.appendChild(ul);
+            ul.appendChild(li);
+          }
         });
-
-
-        
       }
     });
 }
