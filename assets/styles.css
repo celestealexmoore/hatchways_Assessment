@@ -47,6 +47,12 @@ body {
     margin: 0;
 }
 /* This is for the search list */
+
+.searchParent {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
 .searchBar {
     width: 95%;
     align-self: center;
@@ -56,6 +62,7 @@ body {
     border-bottom: 1.5px solid #ddd;
     color: black;
     margin-bottom: 15px;
+    z-index: 0;
 }
 
 /* controls search result visibility */

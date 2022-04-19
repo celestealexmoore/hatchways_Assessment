@@ -1,11 +1,19 @@
 let requestURL = "https://api.hatchways.io/assessment/students";
 
 //search bar
+let searchBarDiv = document.createElement('div')
+searchBarDiv.setAttribute('class', 'searchParent');
 let searchBar = document.createElement("input");
 searchBar.type = "text";
 searchBar.className = "searchBar";
 searchBar.placeholder = "Search for names...";
-body.appendChild(searchBar);
+//searchIcon
+let searchIcon = document.createElement("i");
+searchIcon.setAttribute("class", "bi bi-search");
+//append searchBar and searchIcon
+body.appendChild(searchBarDiv)
+searchBarDiv.appendChild(searchBar);
+searchBarDiv.appendChild(searchIcon);
 
 function getAPI() {
   // performing fetch request and translating into json object:
@@ -81,12 +89,9 @@ function getAPI() {
         //average
         function findAverage(gradesList) {
           let sum = 0;
-
           for (let i = 0; i < gradesList.length; i++) {
             sum += Number(gradesList[i]);
           }
-
-          // sum += value; //sum should equal 711 for first student
           let average = sum / gradesList.length;
           grades.textContent = "Grade: " + Math.round(average) + "%";
         }
