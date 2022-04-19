@@ -66,6 +66,10 @@ body {
 }
 
 /* controls search result visibility */
-.hide {
+.none {
     visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
 }

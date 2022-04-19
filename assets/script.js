@@ -99,26 +99,24 @@ function getAPI() {
         //search names
         function searchNames(value) {
           // Declare variables
-          // let txtValue;
           let readInput = value.toUpperCase().toString();
           console.log(readInput);
           let name =
             data["students"][i]["firstName"].toUpperCase() +
             " " +
             data["students"][i]["lastName"].toUpperCase();
-          console.log(name);
-
+        //   console.log(name);
           //  Loop through all names, and hide those who don't match the search query
-
           for (let i = 0; i < name.length; i++) {
-            //     textValue = name.textContent || name.innerText;
-            //     if (txtValue.indexOf(filter) > -1) {
-            //         parentDiv.classListAdd('visible');
-            //     } else {
-            //         parentDiv.classListAdd('hide');
-            //     }
+                if (name.indexOf(readInput) > -1) {
+                    parentDiv.style.display = '';
+                } else {
+                    parentDiv.style.display = 'none';
+                }
           }
         }
+
+        // searchIcon.addEventListener("click", searchNames(searchBar.value));
 
         searchBar.addEventListener("keydown", function (e) {
           if (e.key === "Enter") {
