@@ -1,8 +1,8 @@
 body {
-    /* overflow: hidden; */
     display: flex;
     flex-flow: column nowrap;
-    padding: 10px
+    padding: 10px;
+    color: gray;
 }
 /* all parent divs */
 #parentDiv {
@@ -66,10 +66,20 @@ body {
 }
 
 /* controls search result visibility */
-.none {
+.hide {
     visibility: hidden;
 }
 
 .visible {
     visibility: visible;
+}
+
+#expandableList, .iconParent {
+    background-color: white;
+    border: none;
+    color: rgb(97, 96, 96);
+}
+
+#expandableList:hover {
+ color:black;
 }
