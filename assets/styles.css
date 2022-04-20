@@ -7,11 +7,10 @@ body {
 }
 /* contains photo, userInfo and icon(s) */
 #parentDiv {
-  /* max-width: 100%; */
   padding: 10px;
   display: flex;
   flex-flow: row nowrap;
-  justify-content:left;
+  justify-content: left;
   border-bottom: 0.5px solid #ddd;
 }
 #photoDiv {
@@ -46,15 +45,13 @@ body {
   border-radius: 50%;
 }
 .fullName {
-  /* margin: 0; */
   color: black;
   font-size: 30px;
   font-family: "Outfit", sans-serif;
   font-family: "Raleway", sans-serif;
 }
 /* icon goes here */
-
-/* This is for the search list */
+/* search list */
 .searchParent {
   display: flex;
   flex-wrap: nowrap;
@@ -82,8 +79,7 @@ ul li {
   color: rgb(104, 103, 103);
 }
 .iconParent {
-    display: flex;
-    flex-flow: row nowrap;
-    /* justify-content: flex-start; */
-    align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }

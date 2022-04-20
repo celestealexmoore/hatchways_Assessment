@@ -24,7 +24,7 @@ function getAPI() {
       console.log(data);
 
       for (let i = 0; i < data["students"].length; i++) {
-        // for flexbox div structure:
+        // for flex div structure:
         let parentDiv = document.createElement("div");
         parentDiv.setAttribute("id", "parentDiv");
         let photoDiv = document.createElement("div");
@@ -35,7 +35,7 @@ function getAPI() {
         nameDiv.setAttribute("id", "nameDiv");
         let detailsDiv = document.createElement("div");
         detailsDiv.setAttribute("id", "detailsDiv");
-        // appending children divs to parent divs:
+        // appending children to parents:
         body.appendChild(parentDiv);
         parentDiv.appendChild(photoDiv);
         parentDiv.appendChild(userInfoDiv);
@@ -81,8 +81,7 @@ function getAPI() {
         minimizeToggle.setAttribute("type", "button");
         minimizeToggle.setAttribute("id", "expandableList");
         minimizeToggle.setAttribute("class", "bi bi-dash-square fa-5x");
-
-        // appending children elements to parent divs:
+        // appending children elements to parents:
         photoDiv.appendChild(photo);
         nameDiv.appendChild(fullName);
         detailsDiv.appendChild(email);
@@ -121,7 +120,6 @@ function getAPI() {
             searchNames(searchBar.value);
           }
         });
-
         // show/hide grades functionality.
         function showList() {
           for (let i = 0; i < gradesList.length; i++) {
@@ -130,28 +128,27 @@ function getAPI() {
             expandDiv.setAttribute("class", "expandDiv");
             let ul = document.createElement("ul");
             let li = document.createElement("li");
-            li.textContent = "Test " + [i] + ": " + gradesList[i] + "%";
-
+            li.textContent = "Test " + [i + 1] + ": " + gradesList[i] + "%";
+            // appending children to parent(s)
             userInfoDiv.appendChild(expandDiv);
             expandDiv.appendChild(ul);
             ul.appendChild(li);
-
+            // when minimize toggle is clicked, remove expand icon and run hideList function.
             minimizeToggle.addEventListener("click", () => {
               iconParent.removeChild(iconParent.children[0]);
               hideList();
             });
-
+            // re-append the expand icon and remove the list.
             function hideList() {
               iconParent.appendChild(icon);
               expandDiv.removeChild(ul);
             }
           }
         }
-        // toggle icon functionality
+        // when expand icon is clicked, remove expand icon, switch to minimize icon and run the showList function.
         icon.addEventListener("click", () => {
           iconParent.appendChild(minimizeToggle);
           iconParent.removeChild(iconParent.children[0]);
-          //   icon.setAttribute("class", "bi bi-dash-square");
           showList();
         });
       }
