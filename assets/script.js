@@ -6,7 +6,7 @@ searchBarDiv.setAttribute("class", "searchParent");
 let searchBar = document.createElement("input");
 searchBar.type = "text";
 searchBar.className = "searchBar";
-searchBar.placeholder = "Search for names...";
+searchBar.placeholder = "Search by name...";
 //searchIcon
 let searchIcon = document.createElement("i");
 searchIcon.setAttribute("class", "bi bi-search");
@@ -72,16 +72,15 @@ function getAPI() {
         // icon
         let iconParent = document.createElement("button");
         iconParent.setAttribute("class", "iconParent");
-        // iconParent.setAttribute("onclick", iconClick(this));
         let icon = document.createElement("i");
         icon.setAttribute("type", "button");
         icon.setAttribute("id", "expandableList");
-        icon.setAttribute("class", "bi bi-plus-square");
+        icon.setAttribute("class", "bi bi-plus-square fa-5x");
         // toggle icon
         let minimizeToggle = document.createElement("i");
         minimizeToggle.setAttribute("type", "button");
         minimizeToggle.setAttribute("id", "expandableList");
-        minimizeToggle.setAttribute("class", "bi bi-dash-square");
+        minimizeToggle.setAttribute("class", "bi bi-dash-square fa-5x");
 
         // appending children elements to parent divs:
         photoDiv.appendChild(photo);
@@ -90,7 +89,7 @@ function getAPI() {
         detailsDiv.appendChild(company);
         detailsDiv.appendChild(skill);
         detailsDiv.appendChild(grades);
-        detailsDiv.appendChild(iconParent);
+        parentDiv.appendChild(iconParent);
         iconParent.appendChild(icon);
         //average
         function findAverage(gradesList) {
@@ -122,21 +121,22 @@ function getAPI() {
             searchNames(searchBar.value);
           }
         });
+
         // show/hide grades functionality.
         function showList() {
           for (let i = 0; i < gradesList.length; i++) {
             console.log(gradesList.length);
             let expandDiv = document.createElement("div");
+            expandDiv.setAttribute("class", "expandDiv");
             let ul = document.createElement("ul");
             let li = document.createElement("li");
             li.textContent = "Test " + [i] + ": " + gradesList[i] + "%";
 
-            detailsDiv.appendChild(expandDiv);
+            userInfoDiv.appendChild(expandDiv);
             expandDiv.appendChild(ul);
             ul.appendChild(li);
 
             minimizeToggle.addEventListener("click", () => {
-              iconParent.appendChild(icon);
               iconParent.removeChild(iconParent.children[0]);
               hideList();
             });

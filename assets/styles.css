@@ -1,88 +1,89 @@
 body {
-    display: flex;
-    flex-flow: column nowrap;
-    padding: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 10px;
+  color: gray;
+  font-family: sans-serif;
 }
-/* all parent divs */
+/* contains photo, userInfo and icon(s) */
 #parentDiv {
-    max-width: 100%;
-    padding: 10px;
-    display: flex;
-    flex-flow: row nowrap;
-    border-bottom: 0.5px solid #ddd; 
+  /* max-width: 100%; */
+  padding: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content:left;
+  border-bottom: 0.5px solid #ddd;
 }
 #photoDiv {
-    align-self: center;
+  align-self: center;
 }
 #userInfoDiv {
-    display: flex;
-    flex-flow: column nowrap;
-    padding: 0;
-    margin: 0;
-    width: 80%;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 0;
+  margin: 0;
 }
 #nameDiv {
-    margin-left: 10px;
-    margin-bottom: 7px;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 #detailsDiv {
-    margin-left: 25px;
+  margin: 0 0 15px 25px;
+  font-weight: lighter;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.expandDiv {
+  margin-left: 25px;
+  font-weight: lighter;
+  font-size: 12px;
+  line-height: 1.5;
 }
 /* individual classes */
 .photo {
-    width: 75px;
-    border: 1px solid rgb(200, 200, 200);
-    border-radius: 50%;
-    float: right;
+  width: 75px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 50%;
 }
 .fullName {
-    margin: 0;
-    font-size: 25px;
-    font-family: 'Outfit', sans-serif;
-    font-family: 'Raleway', sans-serif;
+  /* margin: 0; */
+  color: black;
+  font-size: 30px;
+  font-family: "Outfit", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
-.details {
-    color: gray;
-    margin: 0;
-}
-/* This is for the search list */
+/* icon goes here */
 
+/* This is for the search list */
 .searchParent {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.searchBar {
+  width: 95%;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid white;
+  border-bottom: 1.5px solid #ddd;
+  color: black;
+  margin-bottom: 15px;
+  z-index: 0;
+}
+#expandableList,
+.iconParent {
+  background-color: white;
+  border: none;
+  color: rgb(97, 96, 96);
+}
+#expandableList:hover {
+  color: black;
+}
+ul li {
+  color: rgb(104, 103, 103);
+}
+.iconParent {
     display: flex;
     flex-flow: row nowrap;
-}
-
-.searchBar {
-    width: 95%;
-    align-self: center;
-    font-size: 16px;
-    padding: 10px;
-    border: 1px solid white;
-    border-bottom: 1.5px solid #ddd;
-    color: black;
-    margin-bottom: 15px;
-    z-index: 0;
-}
-
-/* controls search result visibility */
-.hide {
-    visibility: hidden;
-}
-
-.visible {
-    visibility: visible;
-}
-
-#expandableList, .iconParent {
-    background-color: white;
-    border: none;
-    color: rgb(97, 96, 96);
-}
-
-#expandableList:hover {
- color:black;
-}
-
-ul li {
-    color: rgb(104, 103, 103);
+    /* justify-content: flex-start; */
+    align-items: center;
 }
