@@ -2,7 +2,6 @@ body {
     display: flex;
     flex-flow: column nowrap;
     padding: 10px;
-    color: gray;
 }
 /* all parent divs */
 #parentDiv {
@@ -82,4 +81,8 @@ body {
 
 #expandableList:hover {
  color:black;
+}
+
+ul li {
+    color: rgb(104, 103, 103);
 }

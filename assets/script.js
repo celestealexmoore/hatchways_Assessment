@@ -77,6 +77,11 @@ function getAPI() {
         icon.setAttribute("type", "button");
         icon.setAttribute("id", "expandableList");
         icon.setAttribute("class", "bi bi-plus-square");
+        // toggle icon
+        let minimizeToggle = document.createElement("i");
+        minimizeToggle.setAttribute("type", "button");
+        minimizeToggle.setAttribute("id", "expandableList");
+        minimizeToggle.setAttribute("class", "bi bi-dash-square");
 
         // appending children elements to parent divs:
         photoDiv.appendChild(photo);
@@ -98,7 +103,6 @@ function getAPI() {
         }
         //search names
         function searchNames(value) {
-          // Declare variables
           let readInput = value.toUpperCase().toString();
           let name =
             data["students"][i]["firstName"].toUpperCase() +
@@ -112,15 +116,17 @@ function getAPI() {
             }
           }
         }
+        //function runs when enter key pressed
         searchBar.addEventListener("keydown", function (e) {
           if (e.key === "Enter") {
             searchNames(searchBar.value);
           }
         });
-        iconParent.addEventListener("click", () => {
+        // show/hide grades functionality.
+        function showList() {
           for (let i = 0; i < gradesList.length; i++) {
+            console.log(gradesList.length);
             let expandDiv = document.createElement("div");
-            expandDiv.setAttribute("class", "visible");
             let ul = document.createElement("ul");
             let li = document.createElement("li");
             li.textContent = "Test " + [i] + ": " + gradesList[i] + "%";
@@ -128,10 +134,27 @@ function getAPI() {
             detailsDiv.appendChild(expandDiv);
             expandDiv.appendChild(ul);
             ul.appendChild(li);
+
+            minimizeToggle.addEventListener("click", () => {
+              iconParent.appendChild(icon);
+              iconParent.removeChild(iconParent.children[0]);
+              hideList();
+            });
+
+            function hideList() {
+              iconParent.appendChild(icon);
+              expandDiv.removeChild(ul);
+            }
           }
+        }
+        // toggle icon functionality
+        icon.addEventListener("click", () => {
+          iconParent.appendChild(minimizeToggle);
+          iconParent.removeChild(iconParent.children[0]);
+          //   icon.setAttribute("class", "bi bi-dash-square");
+          showList();
         });
       }
     });
 }
-
 getAPI();
