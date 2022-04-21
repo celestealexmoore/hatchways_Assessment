@@ -10,8 +10,10 @@ body {
   padding: 10px;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: left;
+  justify-content: center;
+  align-self: center;
   border-bottom: 0.5px solid #ddd;
+  width: 90%;
 }
 #photoDiv {
   align-self: center;
@@ -21,6 +23,7 @@ body {
   flex-flow: column nowrap;
   padding: 0;
   margin: 0;
+  width: 60%;
 }
 #nameDiv {
   margin-left: 10px;
@@ -81,5 +84,5 @@ ul li {
 .iconParent {
   display: flex;
   flex-flow: row nowrap;
-  align-items: center;
+  align-self: center;
 }
