@@ -7,13 +7,9 @@ let searchBar = document.createElement("input");
 searchBar.type = "text";
 searchBar.className = "searchBar";
 searchBar.placeholder = "Search by name...";
-//searchIcon
-let searchIcon = document.createElement("i");
-searchIcon.setAttribute("class", "bi bi-search");
-//append searchBar and searchIcon
+//append searchBar
 body.appendChild(searchBarDiv);
 searchBarDiv.appendChild(searchBar);
-searchBarDiv.appendChild(searchIcon);
 
 function getAPI() {
   fetch(requestURL)
