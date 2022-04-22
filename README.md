@@ -23,15 +23,18 @@
 
 ## Media
 
+What was required:  
 ![Photo 1](./assets/photos/exampleImage.png)
+
+What I've built:  
+![Photo 1](./assets/photos/exampleImage2.png)
 
 ## Deployed Site
 
    [The correct link is coming soon. In the meantime, play this game I built.](https://celestealexmoore.github.io/Rock-Paper-Scissors/)
 
 ## Features
-    - Front-End Framework: React.js
-    - Single-page application
+    - Single-page application built with HTML, CSS and JavaScript.
     - Responsive CSS to adapt to mobile device
 
 ## Contributors
@@ -45,7 +48,7 @@ celestealexmoore@gmail.com.
 
 ## Project Status
 
-In Progress
+In Progress- Step 4/5 Completed.
 
 ---
 

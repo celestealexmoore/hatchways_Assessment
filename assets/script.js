@@ -1,5 +1,4 @@
 let requestURL = "https://api.hatchways.io/assessment/students";
-
 //search bar
 let searchBarDiv = document.createElement("div");
 searchBarDiv.setAttribute("class", "searchParent");
