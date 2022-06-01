@@ -93,3 +93,16 @@ ul li {
   width: fit-content;
   border-radius:0px !important;
 }
+
+.newTag {
+  background-color: rgb(200, 200, 200);
+  color: black;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.hide {
+  display: none;
+}

@@ -65,16 +65,20 @@ function getAPI() {
         grades.setAttribute("class", "details");
         findAverage(gradesList);
         //textInputField
-        const textInputContainer = document.createElement('div');
-        textInputContainer.setAttribute('class', 'container');
-        const textInputRow = document.createElement('div');
-        textInputRow.setAttribute('class', 'row');
-        const textInput = document.createElement('input');
-        textInput.setAttribute('class', 'form-control form-control-sm textInput');
-        textInput.setAttribute('type', 'text');
-        textInput.setAttribute('placeholder', 'Add a tag');
-        
-
+        const textInputContainer = document.createElement("div");
+        textInputContainer.setAttribute("class", "container");
+        const textInputRow = document.createElement("div");
+        textInputRow.setAttribute("class", "row");
+        const textInput = document.createElement("input");
+        textInput.setAttribute(
+          "class",
+          "form-control form-control-sm textInput"
+        );
+        textInput.setAttribute("type", "text");
+        textInput.setAttribute("placeholder", "Add a tag");
+        // newTag
+        const newTag = document.createElement("div");
+        newTag.setAttribute("class", "newTag hide");
         // icon
         let iconParent = document.createElement("button");
         iconParent.setAttribute("class", "iconParent");
@@ -94,6 +98,7 @@ function getAPI() {
         detailsDiv.appendChild(company);
         detailsDiv.appendChild(skill);
         detailsDiv.appendChild(grades);
+        detailsDiv.appendChild(newTag);
         detailsDiv.appendChild(textInputContainer);
         detailsDiv.appendChild(textInputRow);
         detailsDiv.appendChild(textInput);
@@ -159,6 +164,20 @@ function getAPI() {
           iconParent.appendChild(minimizeToggle);
           iconParent.removeChild(iconParent.children[0]);
           showList();
+        });
+
+        //function runs when enter key pressed
+        textInput.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            localStorage.setItem(fullName.textContent, textInput.value);
+
+            newTag.textContent = localStorage.getItem(
+              fullName.textContent,
+              textInput.value
+            );
+
+            newTag.classList.remove("hide");
+          }
         });
       }
     });
