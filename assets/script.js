@@ -10,6 +10,17 @@ searchBar.placeholder = "Search by name...";
 body.appendChild(searchBarDiv);
 searchBarDiv.appendChild(searchBar);
 
+//search bar
+let searchTagDiv = document.createElement("div");
+searchTagDiv.setAttribute("class", "searchParent");
+let tagSearch = document.createElement("input");
+tagSearch.type = "text";
+tagSearch.className = "searchBar";
+tagSearch.placeholder = "Search by tag...";
+//append searchBar
+body.appendChild(searchTagDiv);
+searchBarDiv.appendChild(tagSearch);
+
 function getAPI() {
   fetch(requestURL)
     .then(function (response) {
