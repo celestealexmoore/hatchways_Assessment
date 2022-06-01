@@ -86,3 +86,10 @@ ul li {
   flex-flow: row nowrap;
   align-self: center;
 }
+
+.textInput {
+  border: none;
+  border-bottom: 1px solid black;
+  width: fit-content;
+  border-radius:0px !important;
+}
