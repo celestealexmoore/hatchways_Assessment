@@ -3,7 +3,7 @@ body {
   flex-flow: column nowrap;
   padding: 10px;
   color: gray;
-  font-family: sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 /* contains photo, userInfo and icon(s) */
 #parentDiv {
@@ -31,15 +31,13 @@ body {
 }
 #detailsDiv {
   margin: 0 0 15px 25px;
-  font-weight: lighter;
-  font-size: 15px;
-  line-height: 1.5;
+  line-height: 0.5;
 }
 .expandDiv {
   margin-left: 25px;
   font-weight: lighter;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 0.5;
 }
 /* individual classes */
 .photo {
@@ -49,9 +47,8 @@ body {
 }
 .fullName {
   color: black;
-  font-size: 30px;
-  font-family: "Outfit", sans-serif;
   font-family: "Raleway", sans-serif;
+  font-weight: 700;
 }
 /* icon goes here */
 /* search list */
@@ -94,13 +91,16 @@ ul li {
   border-radius:0px !important;
 }
 
+.newTagDiv {
+  margin-bottom: 20px;
+}
+
 .newTag {
   background-color: rgb(200, 200, 200);
   color: black;
   width: fit-content;
-  padding: 5px;
+  padding: 12px;
   border-radius: 2px;
-  margin-bottom: 10px;
 }
 
 .hide {

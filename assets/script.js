@@ -1,26 +1,26 @@
 let requestURL = "https://api.hatchways.io/assessment/students";
-//search bar
+//searchBarEl
 let searchBarDiv = document.createElement("div");
 searchBarDiv.setAttribute("class", "searchParent");
 let searchBar = document.createElement("input");
 searchBar.type = "text";
 searchBar.className = "searchBar";
 searchBar.placeholder = "Search by name...";
-//append searchBar
-body.appendChild(searchBarDiv);
-searchBarDiv.appendChild(searchBar);
-
-//search bar
+//searchTagEl
 let searchTagDiv = document.createElement("div");
 searchTagDiv.setAttribute("class", "searchParent");
 let tagSearch = document.createElement("input");
 tagSearch.type = "text";
 tagSearch.className = "searchBar";
 tagSearch.placeholder = "Search by tag...";
-//append searchBar
+//append
+body.appendChild(searchBarDiv);
+searchBarDiv.appendChild(searchBar);
 body.appendChild(searchTagDiv);
 searchBarDiv.appendChild(tagSearch);
 
+let tags = [];
+// let's go
 function getAPI() {
   fetch(requestURL)
     .then(function (response) {
@@ -30,7 +30,7 @@ function getAPI() {
       console.log(data);
 
       for (let i = 0; i < data["students"].length; i++) {
-        // for flex div structure:
+        // for flexbox structure:
         let parentDiv = document.createElement("div");
         parentDiv.setAttribute("id", "parentDiv");
         let photoDiv = document.createElement("div");
@@ -41,7 +41,7 @@ function getAPI() {
         nameDiv.setAttribute("id", "nameDiv");
         let detailsDiv = document.createElement("div");
         detailsDiv.setAttribute("id", "detailsDiv");
-        // appending children to parents:
+        // append:
         body.appendChild(parentDiv);
         parentDiv.appendChild(photoDiv);
         parentDiv.appendChild(userInfoDiv);
@@ -51,26 +51,27 @@ function getAPI() {
         let photo = document.createElement("img");
         photo.setAttribute("class", "photo");
         photo.setAttribute("src", data["students"][i]["pic"]);
-        // name element:
+        // nameEl:
         let fullName = document.createElement("h3");
         fullName.setAttribute("class", "fullName");
         fullName.textContent =
           data["students"][i]["firstName"].toUpperCase() +
           " " +
           data["students"][i]["lastName"].toUpperCase();
-        // email element:
+        let name = fullName.textContent;
+        // emailEl:
         let email = document.createElement("p");
         email.setAttribute("class", "details");
         email.textContent = "Email: " + data["students"][i]["email"];
-        // company element:
+        // companyEl:
         let company = document.createElement("p");
         company.setAttribute("class", "details");
         company.textContent = "Company: " + data["students"][i]["company"];
-        // skill element:
+        // skillEl:
         let skill = document.createElement("p");
         skill.setAttribute("class", "details");
         skill.textContent = "Skill: " + data["students"][i]["skill"];
-        // grades element:
+        // gradesEl:
         const gradesList = data["students"][i]["grades"];
         let grades = document.createElement("p");
         grades.setAttribute("class", "details");
@@ -80,42 +81,59 @@ function getAPI() {
         textInputContainer.setAttribute("class", "container");
         const textInputRow = document.createElement("div");
         textInputRow.setAttribute("class", "row");
-        const textInput = document.createElement("input");
+        let textInput = document.createElement("input");
         textInput.setAttribute(
           "class",
           "form-control form-control-sm textInput"
         );
         textInput.setAttribute("type", "text");
         textInput.setAttribute("placeholder", "Add a tag");
-        // newTag
-        const newTag = document.createElement("div");
-        newTag.setAttribute("class", "newTag hide");
-        // icon
+        //target textInput & create a new tag every time enter is pressed.
+        textInput.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            //when the page is loaded, I want whatever current tags are created to persist:
+            //each user's textInput.value should initially be set to an empty string.
+            // If textInput.value !== "", create a tag with the value in it.
+            //when enter key is pressed, I want to send the value to local storage
+            // retrieve that value, create a tag, and append it to the page.
+            let tagContent = textInput.value;
+            tags.push(tagContent);
+            localStorage.setItem(name, JSON.stringify(tags));
+            tags = JSON.parse(localStorage.getItem(name));
+            newTag = document.createElement("p");
+            newTag.setAttribute("class", "newTag");
+            for(let j = 0; j < tags.length; j++){
+              console.log(tags[j]);
+              newTag.textContent = tags[j];
+            }
+            detailsDiv.appendChild(newTag);
+          }
+        });
+        // expandIconEl
         let iconParent = document.createElement("button");
         iconParent.setAttribute("class", "iconParent");
         let icon = document.createElement("i");
         icon.setAttribute("type", "button");
         icon.setAttribute("id", "expandableList");
-        icon.setAttribute("class", "bi bi-plus-square fa-5x");
-        // toggle icon
+        icon.setAttribute("class", "bi bi-plus-square");
+        // minimizeIconEl
         let minimizeToggle = document.createElement("i");
         minimizeToggle.setAttribute("type", "button");
         minimizeToggle.setAttribute("id", "expandableList");
-        minimizeToggle.setAttribute("class", "bi bi-dash-square fa-5x");
-        // appending children elements to parents:
+        minimizeToggle.setAttribute("class", "bi bi-dash-square");
+        // append:
         photoDiv.appendChild(photo);
         nameDiv.appendChild(fullName);
         detailsDiv.appendChild(email);
         detailsDiv.appendChild(company);
         detailsDiv.appendChild(skill);
         detailsDiv.appendChild(grades);
-        detailsDiv.appendChild(newTag);
         detailsDiv.appendChild(textInputContainer);
         detailsDiv.appendChild(textInputRow);
         detailsDiv.appendChild(textInput);
         parentDiv.appendChild(iconParent);
         iconParent.appendChild(icon);
-        //average
+        // findAverage
         function findAverage(gradesList) {
           let sum = 0;
           for (let i = 0; i < gradesList.length; i++) {
@@ -124,7 +142,7 @@ function getAPI() {
           let average = sum / gradesList.length;
           grades.textContent = "Grade: " + Math.round(average) + "%";
         }
-        //search names
+        //searchNames
         function searchNames(value) {
           let readInput = value.toUpperCase().toString();
           let name =
@@ -139,13 +157,13 @@ function getAPI() {
             }
           }
         }
-        //function runs when enter key pressed
+        //run searchNames() when enter is pressed
         searchBar.addEventListener("keydown", function (e) {
           if (e.key === "Enter") {
             searchNames(searchBar.value);
           }
         });
-        // show/hide grades functionality.
+        // show/hide grades with toggle:
         function showList() {
           for (let i = 0; i < gradesList.length; i++) {
             console.log(gradesList.length);
@@ -154,7 +172,7 @@ function getAPI() {
             let ul = document.createElement("ul");
             let li = document.createElement("li");
             li.textContent = "Test " + [i + 1] + ": " + gradesList[i] + "%";
-            // appending children to parent(s)
+            // append:
             userInfoDiv.appendChild(expandDiv);
             expandDiv.appendChild(ul);
             ul.appendChild(li);
@@ -175,20 +193,6 @@ function getAPI() {
           iconParent.appendChild(minimizeToggle);
           iconParent.removeChild(iconParent.children[0]);
           showList();
-        });
-
-        //function runs when enter key pressed
-        textInput.addEventListener("keydown", function (e) {
-          if (e.key === "Enter") {
-            localStorage.setItem(fullName.textContent, textInput.value);
-
-            newTag.textContent = localStorage.getItem(
-              fullName.textContent,
-              textInput.value
-            );
-
-            newTag.classList.remove("hide");
-          }
         });
       }
     });
