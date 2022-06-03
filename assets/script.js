@@ -19,8 +19,8 @@ searchBarDiv.appendChild(searchBar);
 body.appendChild(searchTagDiv);
 searchBarDiv.appendChild(tagSearch);
 let newTag;
-
-
+let appendPersist;
+// starting full functionality
 function getAPI() {
   fetch(requestURL)
     .then(function (response) {
@@ -93,7 +93,7 @@ function getAPI() {
         if (fetchedData) {
           console.log(fetchedData);
           for (let z = 0; z < fetchedData.length; z++) {
-            let appendPersist = document.createElement("p");
+            appendPersist = document.createElement("p");
             appendPersist.setAttribute("class", "newTag");
             appendPersist.textContent = fetchedData[z];
             textInputContainer.append(appendPersist);
@@ -165,6 +165,25 @@ function getAPI() {
             searchNames(searchBar.value);
           }
         });
+     /*    //searchTags
+        function searchTags(value) {
+          let readTagInput = value;
+          for (let h = 0; h < fetchedData.length; h++) {
+            console.log(fetchedData.length)
+            if (appendPersist.innerHTML.indexOf(readTagInput) > -1) {
+              parentDiv.style.display = "";
+            } else {
+              parentDiv.style.display = "none";
+            }
+          }
+        }
+        //run searchTags() when enter is pressed
+        tagSearch.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            searchTags(appendPersist.innerText);
+            console.log(appendPersist.innerText)
+          }
+        }); */
         // show/hide grades on toggle
         function showList() {
           for (let i = 0; i < gradesList.length; i++) {
