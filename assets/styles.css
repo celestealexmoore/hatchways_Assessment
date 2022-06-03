@@ -101,6 +101,7 @@ ul li {
   width: fit-content;
   padding: 12px;
   border-radius: 2px;
+  margin-left: -12px;
 }
 
 .hide {

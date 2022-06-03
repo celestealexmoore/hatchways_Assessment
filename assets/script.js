@@ -18,9 +18,9 @@ body.appendChild(searchBarDiv);
 searchBarDiv.appendChild(searchBar);
 body.appendChild(searchTagDiv);
 searchBarDiv.appendChild(tagSearch);
+let newTag;
 
-let tags = [];
-// let's go
+
 function getAPI() {
   fetch(requestURL)
     .then(function (response) {
@@ -28,8 +28,8 @@ function getAPI() {
     })
     .then(function (data) {
       console.log(data);
-
       for (let i = 0; i < data["students"].length; i++) {
+        let tags = [];
         // for flexbox structure:
         let parentDiv = document.createElement("div");
         parentDiv.setAttribute("id", "parentDiv");
@@ -88,25 +88,30 @@ function getAPI() {
         );
         textInput.setAttribute("type", "text");
         textInput.setAttribute("placeholder", "Add a tag");
+        // start append logic for existing tags
+        let fetchedData = JSON.parse(localStorage.getItem(name));
+        if (fetchedData) {
+          console.log(fetchedData);
+          for (let z = 0; z < fetchedData.length; z++) {
+            let appendPersist = document.createElement("p");
+            appendPersist.setAttribute("class", "newTag");
+            appendPersist.textContent = fetchedData[z];
+            textInputContainer.append(appendPersist);
+          }
+        }
         //target textInput & create a new tag every time enter is pressed.
         textInput.addEventListener("keydown", function (e) {
           if (e.key === "Enter") {
-            //when the page is loaded, I want whatever current tags are created to persist:
-            //each user's textInput.value should initially be set to an empty string.
-            // If textInput.value !== "", create a tag with the value in it.
-            //when enter key is pressed, I want to send the value to local storage
-            // retrieve that value, create a tag, and append it to the page.
-            let tagContent = textInput.value;
+            tagContent = textInput.value;
             tags.push(tagContent);
             localStorage.setItem(name, JSON.stringify(tags));
             tags = JSON.parse(localStorage.getItem(name));
             newTag = document.createElement("p");
             newTag.setAttribute("class", "newTag");
-            for(let j = 0; j < tags.length; j++){
-              console.log(tags[j]);
+            for (let j = 0; j < tags.length; j++) {
               newTag.textContent = tags[j];
             }
-            detailsDiv.appendChild(newTag);
+            textInputContainer.appendChild(newTag);
           }
         });
         // expandIconEl
@@ -136,8 +141,8 @@ function getAPI() {
         // findAverage
         function findAverage(gradesList) {
           let sum = 0;
-          for (let i = 0; i < gradesList.length; i++) {
-            sum += Number(gradesList[i]);
+          for (let k = 0; k < gradesList.length; k++) {
+            sum += Number(gradesList[k]);
           }
           let average = sum / gradesList.length;
           grades.textContent = "Grade: " + Math.round(average) + "%";
@@ -145,11 +150,8 @@ function getAPI() {
         //searchNames
         function searchNames(value) {
           let readInput = value.toUpperCase().toString();
-          let name =
-            data["students"][i]["firstName"].toUpperCase() +
-            " " +
-            data["students"][i]["lastName"].toUpperCase();
-          for (let i = 0; i < name.length; i++) {
+          name.toUpperCase();
+          for (let l = 0; l < name.length; l++) {
             if (name.indexOf(readInput) > -1) {
               parentDiv.style.display = "";
             } else {
@@ -163,7 +165,7 @@ function getAPI() {
             searchNames(searchBar.value);
           }
         });
-        // show/hide grades with toggle:
+        // show/hide grades on toggle
         function showList() {
           for (let i = 0; i < gradesList.length; i++) {
             console.log(gradesList.length);
